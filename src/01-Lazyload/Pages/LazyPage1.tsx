@@ -1,8 +1,9 @@
 export const LazyPage1 = () => {
     return (<>
-        <h1>LAZY 1</h1>
+        <div><h2>LazyPage 1</h2></div>
 
     </>)
 
 }
 
+export default LazyPage1;

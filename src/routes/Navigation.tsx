@@ -8,35 +8,38 @@ import { routes } from './routes';
 
 
 import logo from '../logo.svg';
+import { Suspense } from 'react';
 
 
 
 export const Navigation = () => {
   return (
-    <Router>
+    <Suspense fallback={<h2>cargando..</h2>}>
+      <Router>
 
-      <div className="main-layout">
-        <nav>
-          <img src={logo} alt="React Logo" />
-          <ul>
-            {routes.map(({ path, to, name }) => {
-              return (< li >
-                <NavLink key={path} to={to} className={({ isActive }) => isActive ? "nav-active" : ''}>
-                  {name}</NavLink>
-              </li>)
-            })}
+        <div className="main-layout">
+          <nav>
+            <img src={logo} alt="React Logo" />
+            <ul>
+              {routes.map(({ path, to, name }) => {
+                return (< li >
+                  <NavLink key={path} to={to} className={({ isActive }) => isActive ? "nav-active" : ''}>
+                    {name}</NavLink>
+                </li>)
+              })}
 
-          </ul>
-        </nav>
-
-
-        <Routes>
-          {routes.map((route) => { return (<Route key={route.path} path={route.path} element={<route.Component />} />) })}
+            </ul>
+          </nav>
 
 
+          <Routes>
+            {routes.map((route) => { return (<Route key={route.path} path={route.path} element={<route.Component />} />) })}
 
-        </Routes>
-      </div>
-    </Router >
+
+
+          </Routes>
+        </div>
+      </Router >
+    </Suspense>
   );
 }
