@@ -1,6 +1,7 @@
-import { Home } from '../00-components/Home';
+
 import { About } from '../00-components/About';
 import { Users } from '../00-components/Users';
+import { ShoppingPage } from '../02-component-patterns/pages/ShoppingPage';
 
 
 type JSXComponent = () => JSX.Element;
@@ -14,7 +15,7 @@ interface Routes {
 
 
 export const routes: Routes[] = [
-  { to: "/home", path: "home", Component: Home, name: "Home" },
+  { to: "/shopping", path: "shopping", Component: ShoppingPage, name: "Shopping" },
   { to: "/about", path: "about", Component: About, name: "Abaout" },
   { to: "/users", path: "users", Component: Users, name: "Users" },
 ];
