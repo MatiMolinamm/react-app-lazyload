@@ -6,6 +6,7 @@ import styles from '../styles/styles.module.css'
 export interface Props {
     className?: string;
     style?: React.CSSProperties
+
 }
 
 export const ProductButtons = ({ className, style }: Props) => {
