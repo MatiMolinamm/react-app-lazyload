@@ -2,44 +2,36 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  NavLink
-} from 'react-router-dom';
-import { routes } from './routes';
+  NavLink,
 
+} from 'react-router-dom';
+import { RegisterPage } from '../03-form/pages/RegisterPage';
+import { FormikBasicPage } from '../03-form/pages/FormikBasicPage';
+import { FormikYupPage } from '../03-form/pages/FormikYupPage';
 
 import logo from '../logo.svg';
-import { Suspense } from 'react';
-
-
 
 export const Navigation = () => {
   return (
-    <Suspense fallback={<h2>cargando..</h2>}>
-      <Router>
+    <Router>
+      <div className="main-layout">
+        <nav>
+          <img src={logo} alt="React Logo" />
+          <ul>
+            <li><NavLink to='/'>Home</NavLink></li>
+            <li><NavLink to='/register'>Register Page</NavLink></li>
+            <li><NavLink to='/formik-basic'>Formik Basic</NavLink></li>
+            <li><NavLink to='/formik-yup'>Formik Yup Page</NavLink></li>
+          </ul>
+        </nav>
 
-        <div className="main-layout">
-          <nav>
-            <img src={logo} alt="React Logo" />
-            <ul>
-              {routes.map(({ path, to, name }) => {
-                return (< li >
-                  <NavLink key={path} to={to} className={({ isActive }) => isActive ? "nav-active" : ''}>
-                    {name}</NavLink>
-                </li>)
-              })}
-
-            </ul>
-          </nav>
-
-
-          <Routes>
-            {routes.map((route) => { return (<Route key={route.path} path={route.path} element={<route.Component />} />) })}
-
-
-
-          </Routes>
-        </div>
-      </Router >
-    </Suspense>
+        <Routes>
+          <Route path='/' element={<h1>Home</h1>} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/formik-basic' element={<FormikBasicPage />} />
+          <Route path='/formik-yup' element={<FormikYupPage />} />
+        </Routes>
+      </div>
+    </Router >
   );
 }
