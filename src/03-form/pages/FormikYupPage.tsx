@@ -13,7 +13,7 @@ export const FormikYupPage = () => {
 
 
 
-    const { handleChange, values, handleSubmit, errors, touched, handleBlur } = useFormik({
+    const { handleChange, values, handleSubmit, errors, touched, handleBlur, getFieldProps } = useFormik({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -37,28 +37,24 @@ export const FormikYupPage = () => {
                 <label htmlFor="firstName">First Name</label>
                 <input
                     type="text"
-                    name='firstName'
-                    onChange={handleChange}
-                    value={values.firstName}
-                    onBlur={handleBlur}
+                    //     name='firstName'          ///// todpo esto reemplazado por el getFieldProps
+                    //     onChange={handleChange}
+                    //     value={values.firstName}
+                    //     onBlur={handleBlur}
+                    // 
+                    {...getFieldProps('firstName')}
                 />
                 {touched.firstName && errors.firstName && <span>{errors.firstName}</span>}
                 <label htmlFor="lastName">Last Name</label>
                 <input
                     type="text"
-                    name='lastName'
-                    onChange={handleChange}
-                    value={values.lastName}
-                    onBlur={handleBlur}
+                    {...getFieldProps('lastName')}
                 />
                 {touched.lastName && errors.lastName && <span>{errors.lastName}</span>}
                 <label htmlFor="email">Email address</label>
                 <input
                     type="email"
-                    name='email'
-                    onChange={handleChange}
-                    value={values.email}
-                    onBlur={handleBlur}
+                    {...getFieldProps('email')}
                 />
                 {touched.email && errors.email && <span>{errors.email}</span>}
                 <button type='submit'>Submit</button>
